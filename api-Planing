@@ -19,7 +19,7 @@ STANDAR Status RESPONSE
 GROUP: Authentication
 
 [1] - Register 
-    { root.api }/{version}/auth/login
+    mern-api.blog.com/v1/auth/register
 
     REQUEST: 
     {
@@ -40,6 +40,7 @@ GROUP: Authentication
     }
 
 ERROR-res: 
+    201 - CREATED --> Register Succsesfully
     400 - BAD REQUEST --> Input yang anda masukan salah.
 
 ############################
