@@ -1,0 +1,150 @@
+STANDAR API
+{ root.api }/{ version }/{ grouping }/{ endpoint }
+SAMPLE: 
+http://mern-api.blog.com/v1/auth/login
+
+############################
+STANDAR Status RESPONSE
+200 - OK -->                         Call API Succsesfully
+201 - CREATED -->                    POST Succsesfully
+400 - BAD REQUEST -->                Error on Client Side. ( bisa di masukan dengan kata kata lain )
+401 - UNAUTHORIZED -->               User not authorized to the request.
+403 - FORBIDDEN -->                  User not allowed to access.
+404 - NOT FOUND -->                  Request End Point Not Found.
+500 - INTERNAL SERVER ERROR -->      Error on Served Side.
+502 - BAD GATEWAY -->                Invalid Response From Antother Request
+
+
+############################
+GROUP: Authentication
+
+[1] - Register 
+    { root.api }/{version}/auth/login
+
+    REQUEST: 
+    {
+        "name": "fadli",
+        "email": "fadli",
+        "password": "123123"
+    }
+
+    RESPONSE: 
+    {
+        "message": "Register Succsesfully",
+        "data": {
+                "id": 1,
+                "name": "fadli",
+                "email": "fadli",
+                "password": "123123"
+        }
+    }
+
+ERROR-res: 
+    400 - BAD REQUEST --> Input yang anda masukan salah.
+
+############################
+[2] - Login 
+    { root.api }/{version}/auth/login
+
+    REQUEST: 
+        {
+            "username": "test",
+            "password": "test"
+        }
+
+    ERROR-res: 
+    400 - BAD REQUEST -->   UserName yang anda masukan salah.
+    400 - BAD REQUEST -->   Password yang anda masukan salah.
+    400 - BAD REQUEST -->   Akun tidak terdaftar.
+    403 - FORBIDDEN   -->   User not allowed to access.
+    401 - UNAUTHORIZED -->  User not authorized to the request.
+
+
+GROUP: blog
+
+[1] - POST Blog Post
+    { root.api }/{version}/blog/create-blog
+
+    request: 
+    {
+        'image': file,
+        'title': "Makanan TerEnak",
+        "body": "isi dari blog" 
+    }
+    response: 
+    {
+        "message": "create blog Succsesfully!
+        "data":         
+         {
+            'image': file,
+            'title': "Makanan TerEnak",
+            "body": "isi dari blog"
+        } 
+    }
+
+    ERROR-res:
+    400 - BAD REQUEST               -->      blog yang anda masukan error.
+    500 - INTERNAL SERVER ERROR     -->      Error on Served Side.
+
+
+[2] - GET Blog Post
+    { root.api }/{version}/blog/see-blog/{id}
+
+    response:
+    {
+        'id': 1
+        'image': file,
+        'title': "Makanan TerEnak",
+        "body": "isi dari blog"
+    }
+
+    error-res:
+     400 - BAD REQUEST               -->      blog yang anda sedang error.
+     500 - INTERNAL SERVER ERROR     -->      Error on Served Side.
+
+[3] - PUT/PATCH Blog Post
+    { root.api }/{version}/blog/update-blog/{id}
+
+    request:
+    {
+        'id': sesuai id blog
+        'image': yang pengen di hapus,
+        'title': yang pengen di hapus,
+        "body": yang pengen di hapus"
+    }
+
+    response:
+    {
+        'id': 1
+        'image': file,
+        'title': "Makanan TerEnak",
+        "body": "isi dari blog"
+    }
+
+    error-res:
+     400 - BAD REQUEST               -->      blog yang anda sedang error.
+     400 - BAD REQUEST               -->      blog yang anda sedang error.
+     500 - INTERNAL SERVER ERROR     -->      Error on Served Side.
+
+[4] - DELETE Blog Post
+    { root.api }/{version}/blog/update-blog/{id}
+
+    request:
+    {
+        'image': yang pengen di ganti,
+        'title': yang pengen di ganti,
+        "body": yang pengen di ganti"
+    }
+
+    response:
+    {
+        'id': 1
+        'image': file,
+        'title': "Makanan TerEnak",
+        "body": "isi dari blog"
+    }
+
+    error-res:
+     400 - BAD REQUEST               -->      blog yang anda sedang error.
+     400 - BAD REQUEST               -->      blog yang anda sedang error.
+     500 - INTERNAL SERVER ERROR     -->      Error on Served Side.
